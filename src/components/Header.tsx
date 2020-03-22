@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
+import { Typography } from '@material-ui/core';
 
 const NavBar = styled.nav`
     width: 100%;
@@ -26,21 +27,29 @@ const NavBar = styled.nav`
         }
     }
 `;
+interface NavItemProps {
+    url: string;
+    label: string;
+}
+
+const NavItem = (props: NavItemProps) => (
+    <li>
+        <Link to={props.url}>
+            <Typography variant="h5" component="a">
+                {props.label}
+            </Typography>
+        </Link>
+    </li>
+)
 
 export const Header = () => {
     return (
         <header>
             <NavBar>
                 <ul>
-                    <li>
-                        <Link to="/registration">Registrieren</Link>
-                    </li>
-                    <li>
-                        <Link to="/about">Über Uns</Link>
-                    </li>
-                    <li>
-                        <Link to="/contact">Kontakt</Link>
-                    </li>
+                    <NavItem url="/registration" label="Registrieren" />
+                    <NavItem url="/about" label="Über Uns" />
+                    <NavItem url="/contact" label="Kontakt" />
                 </ul>                    
             </NavBar>
         </header>

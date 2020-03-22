@@ -1,0 +1,1 @@
+declare module '*.woff' { export default '' as string; }

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Button } from '../components/Button';
+import { Typography } from '@material-ui/core';
 
 const MainContent = styled.main`
   background-color: #edf6fe;
@@ -28,45 +29,11 @@ const HeroContainer = styled.div`
   color: #f4821e;
 `;
 
-const Title = styled.h1`
-  text-align: center;
-  font-size: 64px;
-`;
-
-const SubTitle = styled.h2`
-  text-align: center;
-  font-size: 32px;
-`;
-
-const CtaButton = styled(Link)`
-  color: white;
-  background-color: #38795d;
-  width: 300px;
-  height: 58px;
-  border-radius: 36px;
-  border: none;
-  font-size: 24px;
-  margin-top: 16px;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  :hover {
-    text-decoration: none;
-    color: var(--color-bg);
-  }
-
-  :focus {
-    outline: none;
-  }
-`;
-
 const DiagonalLine = styled.svg`
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   z-index: 2;
 `;
 
@@ -81,9 +48,13 @@ export const LandingPage = () => {
       <MainContent>
         <Logo src={require('../assets/images/logo.png')}></Logo>
         <HeroContainer>
-          <Title>Die Tafel kommt zu dir!</Title>
-          <SubTitle>Melde dich jetzt an &amp; bekomme Lebensmittel geliefert</SubTitle>
-          <CtaButton to="/register">Ich brauche Hilfe</CtaButton>
+          <Typography variant="h2" component="h1">
+            Die Tafel kommt zu dir!
+          </Typography>
+          <Typography variant="h4" component="h2" gutterBottom>
+            Melde dich jetzt an &amp; bekomme die Lebensmittel nach Hause geliefert
+          </Typography>
+          <Button style={{ marginTop: '2rem' }}>Ich brauche Hilfe</Button>
         </HeroContainer>
         <DiagonalLine
           width="100%"

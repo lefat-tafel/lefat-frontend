@@ -38,7 +38,7 @@ body {
 }
 
 :root {
-  --navbar-height: 50px;
+  --navbar-height: 100px;
   --space-medium: 1rem;
   --space-large: 2rem;
   --color-bg: #edf6fe;
