@@ -35,7 +35,7 @@ interface NavItemProps {
 const NavItem = (props: NavItemProps) => (
     <li>
         <Link to={props.url}>
-            <Typography variant="h5" component="a">
+            <Typography variant="h5" component="span">
                 {props.label}
             </Typography>
         </Link>

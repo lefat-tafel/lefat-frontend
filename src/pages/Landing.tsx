@@ -46,7 +46,7 @@ const BackgroundImage = styled.img`
 export const LandingPage = () => {
   return (
       <MainContent>
-        <Logo src={require('../assets/images/logo2.png')}></Logo>
+        <Logo src={require('../assets/images/logo2-min.png')}></Logo>
         <HeroContainer>
           <Typography style={{ fontWeight: 500 }} variant="h2" component="h1">
             Die Tafel kommt zu dir!
@@ -65,7 +65,7 @@ export const LandingPage = () => {
         >
           <polygon fill={'#edf6fe'} points="0,0 100,0 100,25 0,50" />
         </DiagonalLine>
-        <BackgroundImage src={require('../assets/images/landing1.png')} />
+        <BackgroundImage src={require('../assets/images/landing1-min.jpg')} />
       </MainContent>
   );
 };
