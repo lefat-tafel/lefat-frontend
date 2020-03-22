@@ -1,0 +1,47 @@
+#!/bin/bash
+
+echo -e "\033[0;32mGenerating build artefact...\033[0m"
+
+msg="Build `date`"
+if [ $# -eq 1 ]
+  then msg="$1"
+fi
+
+if [[ -d build && -f build/.git ]]
+then
+  cd build && git checkout master && cd -
+
+  # Build the project.
+  mkdir -p .tmp
+  mv build/.git .tmp/
+
+  npm run build
+
+  mv .tmp/.git build/
+  rmdir .tmp
+
+  # Enter build folder
+  cd build
+  # Add changes to git.
+
+  git add .
+  git commit -m "$msg"
+
+  # Push source
+  git push origin master
+
+  # Return to the project root
+  cd ..
+
+  echo -e "\033[0;32m\nYou may wish to commit the new commit in build/ now.\033[0m"
+else
+  cat << EOF
+Build artefact could not be generated.
+The build directory is not a git repository.
+
+Try running
+
+git submodule update --init
+EOF
+fi
+
