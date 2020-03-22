@@ -26,6 +26,14 @@ export const theme = createMuiTheme({
       fontWeight: 500,
     },
   },
+  palette: {
+    primary: {
+      main: '#f4821e',
+    },
+    secondary: {
+      main: '#38795d',
+    }
+  },
   overrides: {
     MuiCssBaseline: {
       '@global': {

@@ -1,32 +1,8 @@
 import { Link } from 'react-router-dom';
 import React from 'react';
 import styled from 'styled-components';
-import { Typography } from '@material-ui/core';
+import { Typography, AppBar, Toolbar as MaterialToolbar } from '@material-ui/core';
 
-const NavBar = styled.nav`
-    width: 100%;
-    height: var(--navbar-height);
-    background-color: var(--color-secondary);
-
-    ul {
-        display: flex;
-        list-style: none;
-        align-items: center;
-        justify-content: flex-end;
-        margin: 0;
-        height: 100%;
-        font-weight: bold;
-
-        li {
-            margin-right: var(--space-large);
-        }
-
-        li > a {
-            text-decoration: none;
-            color: white;
-        }
-    }
-`;
 interface NavItemProps {
     url: string;
     label: string;
@@ -35,23 +11,41 @@ interface NavItemProps {
 const NavItem = (props: NavItemProps) => (
     <li>
         <Link to={props.url}>
-            <Typography variant="h5" component="a">
+            <Typography variant="h5" component="span">
                 {props.label}
             </Typography>
         </Link>
     </li>
-)
+);
+
+const Toolbar = styled(MaterialToolbar)`
+    ul, li {
+        list-style: none;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
+        :hover {
+            text-decoration: none;
+        }
+
+        span {
+            font-weight: 700;
+        }
+
+        margin-right: 3rem;
+    }
+`;
 
 export const Header = () => {
     return (
-        <header>
-            <NavBar>
-                <ul>
-                    <NavItem url="/registration" label="Registrieren" />
-                    <NavItem url="/about" label="Über Uns" />
-                    <NavItem url="/contact" label="Kontakt" />
-                </ul>                    
-            </NavBar>
-        </header>
+        <AppBar position="static" color="secondary">
+          <Toolbar style={{ justifyContent: 'flex-end',  }}>
+            <NavItem url="/registration" label="Registrieren" />
+            <NavItem url="/about" label="Über Uns" />
+            <NavItem url="/contact" label="Kontakt" />
+          </Toolbar>
+        </AppBar>
     );
 };

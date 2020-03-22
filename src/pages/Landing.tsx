@@ -54,7 +54,7 @@ export const LandingPage = () => {
           <Typography variant="h4" component="h2" gutterBottom>
             Melde dich jetzt an &amp; bekomme die Lebensmittel nach Hause geliefert
           </Typography>
-          <Button style={{ marginTop: '2rem' }}>Ich brauche Hilfe</Button>
+          <Button color="secondary" variant="contained" style={{ marginTop: '2rem' }}>Ich brauche Hilfe</Button>
         </HeroContainer>
         <DiagonalLine
           width="100%"
