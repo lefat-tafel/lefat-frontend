@@ -12,15 +12,15 @@ const MainContent = styled.main`
 `;
 
 const Logo = styled.img`
-  width: 341px;
-  height: 93px;
-  margin: 64px 0 0 64px;
+  width: 280px;
+  height: auto;
+  margin: 32px 0 0 32px;
   position: relative;
   z-index: 3;
 `;
 
 const HeroContainer = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,13 +46,13 @@ const BackgroundImage = styled.img`
 export const LandingPage = () => {
   return (
       <MainContent>
-        <Logo src={require('../assets/images/logo.png')}></Logo>
+        <Logo src={require('../assets/images/logo2.png')}></Logo>
         <HeroContainer>
-          <Typography variant="h2" component="h1">
+          <Typography style={{ fontWeight: 500 }} variant="h2" component="h1">
             Die Tafel kommt zu dir!
           </Typography>
           <Typography variant="h4" component="h2" gutterBottom>
-            Melde dich jetzt an &amp; bekomme die Lebensmittel nach Hause geliefert
+            Melde dich jetzt an &amp; bekomme Lebensmittel nach Hause geliefert
           </Typography>
           <Button style={{ marginTop: '2rem' }}>Ich brauche Hilfe</Button>
         </HeroContainer>
@@ -63,9 +63,9 @@ export const LandingPage = () => {
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          <polygon fill={'#edf6fe'} points="0,0 100,0 100,30 0,45" />
+          <polygon fill={'#edf6fe'} points="0,0 100,0 100,25 0,50" />
         </DiagonalLine>
-        <BackgroundImage src={require('../assets/images/fruits.jpg')} />
+        <BackgroundImage src={require('../assets/images/landing1.png')} />
       </MainContent>
   );
 };
