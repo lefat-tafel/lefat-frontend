@@ -50,6 +50,7 @@ export const Header = () => {
                     <NavItem url="/registration" label="Registrieren" />
                     <NavItem url="/about" label="Über Uns" />
                     <NavItem url="/contact" label="Kontakt" />
+                    <NavItem url="/recipientForm" label="Hilfe anfordern" />
                 </ul>                    
             </NavBar>
         </header>
