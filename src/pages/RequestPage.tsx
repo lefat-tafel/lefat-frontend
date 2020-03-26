@@ -1,12 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import {
-  FormControl,
-  FormHelperText,
-  InputLabel,
-  Input,
-  Button
-} from "@material-ui/core";
 import { RecipientForm } from "../components/RecipientForm";
 
 const MainContent = styled.main`
@@ -32,6 +25,7 @@ export const RequestPage = () => {
       <HeroContainer>
         <RecipientForm
           onSubmit={({ firstName, lastName, phone }) => {
+            console.log(firstName, lastName, phone)
           }}
         />
       </HeroContainer>
