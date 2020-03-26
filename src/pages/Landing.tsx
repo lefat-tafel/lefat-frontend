@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Button } from '../components/Button';
-import { Typography } from '@material-ui/core';
+import React from "react";
+import styled from "styled-components";
+import { Button } from "../components/Button";
+import { Typography } from "@material-ui/core";
 
 const MainContent = styled.main`
   background-color: #edf6fe;
   color: #ffffff;
-  font-family: 'Acumin Pro';
+  font-family: "Acumin Pro";
   position: relative;
   height: 100vh;
 `;
@@ -45,28 +45,27 @@ const BackgroundImage = styled.img`
 
 export const LandingPage = () => {
   return (
-      <MainContent>
-        <Logo src={require('../assets/images/logo2-min.png')}></Logo>
-        <HeroContainer>
-          <Typography style={{ fontWeight: 500 }} variant="h2" component="h1">
-            Die Tafel kommt zu dir!
-          </Typography>
-          <Typography variant="h4" component="h2" gutterBottom>
-            Melde dich jetzt an &amp; bekomme Lebensmittel nach Hause geliefert
-          </Typography>
-          <Button style={{ marginTop: '2rem' }}>Ich brauche Hilfe</Button>
-        </HeroContainer>
-        <DiagonalLine
-          width="100%"
-          height="60%"
-          viewBox="0 0 100 100"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-        >
-          <polygon fill={'#edf6fe'} points="0,0 100,0 100,25 0,50" />
-        </DiagonalLine>
-        <BackgroundImage src={require('../assets/images/landing1-min.jpg')} />
-      </MainContent>
+    <MainContent>
+      <Logo src={require("../assets/images/logo2-min.png")}></Logo>
+      <HeroContainer>
+        <Typography style={{ fontWeight: 500 }} variant="h2" component="h1">
+          Die Tafel kommt zu dir!
+        </Typography>
+        <Typography variant="h4" component="h2" gutterBottom>
+          Melde dich jetzt an &amp; bekomme Lebensmittel nach Hause geliefert
+        </Typography>
+        <Button style={{ marginTop: "2rem" }}>Ich brauche Hilfe</Button>
+      </HeroContainer>
+      <DiagonalLine
+        width="100%"
+        height="60%"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        preserveAspectRatio="none"
+      >
+        <polygon fill={"#edf6fe"} points="0,0 100,0 100,25 0,50" />
+      </DiagonalLine>
+      <BackgroundImage src={require("../assets/images/landing1-min.jpg")} />
+    </MainContent>
   );
 };
-
