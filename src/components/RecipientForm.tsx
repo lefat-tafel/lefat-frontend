@@ -23,13 +23,25 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
       {({ values }) => (
         <Form>
           <div>
-            <Field name="firstName" label="Vorname" component={InputField} />
+            <Field name="name" label="Vollständiger Name" component={InputField} />
           </div>
           <div>
-            <Field name="lastName" label="Nachname" component={InputField} />
+            <Field name="line_1" label="Straße" component={InputField} />
+          </div>
+          <div>
+            <Field name="line_2" label="Hausnummer" component={InputField} />
+          </div>
+          <div>
+            <Field name="zipcode" label="PLZ" component={InputField} />
+          </div>
+          <div>
+            <Field name="town" label="Stadt" component={InputField} />
           </div>
           <div>
             <Field name="phone" label="Telefon" component={InputField} />
+          </div>
+          <div>
+            <Field name="mail" label="E-Mail" component={InputField} />
           </div>
           <div>
             <Button
