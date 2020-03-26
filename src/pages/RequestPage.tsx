@@ -24,8 +24,7 @@ export const RequestPage = () => {
     <MainContent>
       <HeroContainer>
         <RecipientForm
-          onSubmit={({ firstName, lastName, phone }) => {
-            console.log(firstName, lastName, phone)
+          onSubmit={() => {
           }}
         />
       </HeroContainer>
