@@ -7,7 +7,7 @@ COPY public /app/public
 COPY src /app/src
 RUN npm run build
 
-FROM nginx:1.17.9-alpine
+FROM nginx:1.17-alpine
 RUN rm -rf /usr/share/nginx/html/*
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/build /usr/share/nginx/html
