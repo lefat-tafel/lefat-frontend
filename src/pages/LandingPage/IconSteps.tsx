@@ -42,7 +42,7 @@ export const IconSteps = ({ steps }: Props) => {
   return (
     <Grid container>
       {steps.map(({ title, icon: Icon, description }) => (
-        <Grid item xs={12} lg={4} className={classes.gridContainer}>
+        <Grid key={title} item xs={12} lg={4} className={classes.gridContainer}>
           <div
             style={{
               padding: isDesktop ? "4rem 8rem" : "2rem"
