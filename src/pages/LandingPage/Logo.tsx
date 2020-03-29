@@ -24,7 +24,7 @@ export const Logo = () => {
       >
         <img
           className={classes.logo}
-          src={require("../assets/images/logo.png")}
+          src={require("../../assets/images/logo.png")}
           alt="Das Logo von Lefat"
         />
       </div>

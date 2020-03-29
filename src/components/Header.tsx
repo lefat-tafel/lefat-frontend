@@ -9,8 +9,9 @@ import {
   AppBar,
   useMediaQuery
 } from "@material-ui/core";
-import { Menu, SentimentVerySatisfied } from "@material-ui/icons";
+import { Menu } from "@material-ui/icons";
 import { theme } from "../theme";
+import { useTranslation } from "react-i18next";
 
 interface NavItemProps {
   url: string;
@@ -33,32 +34,33 @@ const useStyles = makeStyles(theme => ({
 
 const NavLinks = () => {
   const classes = useStyles();
+  const { t } = useTranslation("header");
 
   const links = [
     {
       url: "about",
-      label: "Über Uns"
+      translateKey: "about"
     },
     {
       url: "registration",
-      label: "Registrieren"
+      translateKey: "register"
     },
     {
       url: "donations",
-      label: "Spenden"
+      translateKey: "donate"
     },
     {
       url: "contact",
-      label: "Kontakt"
+      translateKey: "contact"
     }
   ];
 
   return (
     <div className={classes.navLinks}>
-      {links.map(({ url, label }) => (
+      {links.map(({ url, translateKey }) => (
         <Link key={url} color="textSecondary" to={url} component={RouterLink}>
           <Typography variant="h5" component="span">
-            {label}
+            {t(translateKey)}
           </Typography>
         </Link>
       ))}
@@ -68,7 +70,7 @@ const NavLinks = () => {
           component="span"
           style={{ fontWeight: "bold" }}
         >
-          Einloggen
+          {t("login")}
         </Typography>
       </Link>
     </div>

@@ -14,8 +14,9 @@ import {
   MailOutline,
   Favorite
 } from "@material-ui/icons";
-import { IconStep, IconSteps } from "./IconSteps";
+import { IconSteps } from "./IconSteps";
 import { Logo } from "./Logo";
+import { useTranslation } from "react-i18next";
 
 const useStyles = makeStyles(_theme => ({
   title: {
@@ -37,7 +38,7 @@ const useStyles = makeStyles(_theme => ({
     width: "100%",
     top: 0,
     left: 0,
-    backgroundImage: `url(${require("../assets/images/landing1-min.jpg")})`,
+    backgroundImage: `url(${require("../../assets/images/landing1-min.jpg")})`,
     clipPath: "polygon(0 60%, 100% 45%, 100% 100%, 0 100%)"
   },
   textSection: {
@@ -53,76 +54,83 @@ const useStyles = makeStyles(_theme => ({
   }
 }));
 
-const Title = () => {
-  const classes = useStyles();
+const DonorSteps = () => {
+  const { t } =useTranslation('landingPage');
+  const steps = [
+    {
+      icon: CheckCircleOutline,
+      title: t('donorSteps.registration.title'),
+      description: t('donorSteps.registration.description'),
+    },
+    {
+      icon: MailOutline,
+      title: t('donorSteps.contact.title'),
+      description: t('donorSteps.contact.description'),
+    },
+    {
+      icon: Favorite,
+      title: t('donorSteps.help.title'),
+      description: t('donorSteps.help.description'),
+    }
+  ];
   return (
-    <Typography className={classes.title} variant="h2" component="h1">
-      Die Tafel kommt zu dir!
-    </Typography>
+    <IconSteps steps={steps} />
   );
-};
+}
 
-const SubTitle = () => {
-  const classes = useStyles();
+const RecipientSteps = () => {
+  const { t } =useTranslation('landingPage');
+  const steps = [
+    {
+      icon: CheckCircleOutline,
+      title: t('recipientSteps.registration.title'),
+      description: t('recipientSteps.registration.description'),
+    },
+    {
+      icon: Place,
+      title: t('recipientSteps.route.title'),
+      description: t('recipientSteps.route.description'),
+    },
+    {
+      icon: House,
+      title: t('recipientSteps.delivery.title'),
+      description: t('recipientSteps.delivery.description'),
+    }
+  ];
+
   return (
-    <Typography className={classes.subTitle} variant="h4" component="h2">
-      Melde dich jetzt an &amp; bekomme Lebensmittel nach Hause geliefert
-    </Typography>
-  );
-};
+    <IconSteps steps={steps} />
+  )
+}
 
-const CtaButton = () => {
-  const classes = useStyles();
-  return (
-    <div className={classes.buttonContainer}>
-      <Button variant="contained" color="primary">
-        <Typography variant="h5" component="span">
-          Ich brauche Hilfe
-        </Typography>
-      </Button>
-    </div>
-  );
-};
-
-const recipientSteps: IconStep[] = [
-  {
-    icon: CheckCircleOutline,
-    title: "Registriere dich",
-    description: "Registriere dich auf der Seite, um Lebensmittel zu erhalten"
-  },
-  {
-    icon: Place,
-    title: "Route erstellen",
-    description: "Wir erstellen die Route für die Lieferungen"
-  },
-  {
-    icon: House,
-    title: "Lebensmittel erhalten",
-    description: "Du erhältst die Lebensmittel direkt nach Hause geliefert"
-  }
-];
-
-const donorSteps: IconStep[] = [
-  {
-    icon: CheckCircleOutline,
-    title: "Registriere dich",
-    description: "Registriere dich als Helfer"
-  },
-  {
-    icon: MailOutline,
-    title: "Wir kontaktieren dich",
-    description: "Wir kontaktieren dich und erklären dir die weiteren Schritte"
-  },
-  {
-    icon: Favorite,
-    title: "Helfen",
-    description: "Du hast es geschafft und hilfst mit"
-  }
-];
 
 export const LandingPage = () => {
   const classes = useStyles();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const { t } = useTranslation('landingPage');
+
+  const Title = () => (
+    <Typography className={classes.title} variant="h2" component="h1">
+      {t('title')}
+    </Typography>
+  );
+
+  const SubTitle = () => (
+    <Typography className={classes.subTitle} variant="h4" component="h2">
+      {t('subTitle')}
+    </Typography>
+  );
+
+  const CtaButton = () => (
+    <div className={classes.buttonContainer}>
+      <Button variant="contained" color="primary">
+        <Typography variant="h5" component="span">
+          {t('mainCta')}
+        </Typography>
+      </Button>
+    </div>
+  );
+
   return (
     <main>
       <section
@@ -149,14 +157,14 @@ export const LandingPage = () => {
             color="textPrimary"
             className={classes.centeredText}
           >
-            LEFAT bringt die Lebensmittel zu dir nach Hause.
+            {t('summaryTitle')}
             <br />
-            Ganz unkompliziert.
+            {t('summarySubTitle')}
           </Typography>
         </Container>
       </section>
       <section>
-        <IconSteps steps={recipientSteps} />
+        <RecipientSteps />
       </section>
       <section className={classes.actionSection}>
         <Container>
@@ -166,20 +174,22 @@ export const LandingPage = () => {
             color="textPrimary"
             className={classes.centeredText}
           >
-            Du möchtest helfen?
+            {t('volunteerQuestion')}
           </Typography>
           <Typography variant="h6" className={classes.centeredText}>
-            Perfekt! Wir suchen Mitmacher.
+            {t('volunteerAnswer')}
           </Typography>
           <div className={classes.buttonContainer}>
             <Button variant="contained" color="primary">
-              <Typography variant="h6">Ich möchte mitmachen</Typography>
+              <Typography variant="h6">
+                {t('volunteerAction')}
+                </Typography>
             </Button>
           </div>
         </Container>
       </section>
       <section>
-        <IconSteps steps={donorSteps} />
+        <DonorSteps />
       </section>
       <section className={classes.actionSection}>
         <Container>
@@ -189,11 +199,13 @@ export const LandingPage = () => {
             color="textPrimary"
             className={classes.centeredText}
           >
-            Tafel registrieren!
+            {t('registerFoodbankCallout')}
           </Typography>
           <div className={classes.buttonContainer}>
             <Button variant="contained" color="primary">
-              <Typography variant="h6">Tafel registrieren</Typography>
+              <Typography variant="h6">
+                {t('registerFoodbank')}
+              </Typography>
             </Button>
           </div>
         </Container>
