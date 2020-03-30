@@ -1,8 +1,9 @@
-import { Field, Form, Formik } from "formik";
-import * as React from "react";
-import { Button } from "./Button";
-import { InputField } from "./InputField";
 import * as axios from "axios";
+import { Form, Formik } from "formik"; // https://github.com/jaredpalmer/formik
+import * as React from "react";
+import * as yup from "yup"; // https://github.com/jquense/yup
+import { Button } from "./Button";
+import { InputTextField } from "./InputTextField";
 
 interface Values {
   contact_name: string;
@@ -13,13 +14,17 @@ interface Values {
   contact_email: string;
 }
 interface Props {
-  onSubmit: (values: Values) => void
+  onSubmit: (values: Values) => void;
 }
 
-
+//Can be used as a very easy and powerful validation schema
+const validationSchema = yup.object({
+  contact_name: yup.string().required("Bitte angeben!")
+});
 
 export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
   return (
+    //Formik holds all the functions of the form
     <Formik
       initialValues={{
         contact_name: "",
@@ -29,45 +34,52 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
         contact_phone: "",
         contact_email: ""
       }}
-      onSubmit={values => {  
-        onSubmit(values);
+      validationSchema={validationSchema}
+      onSubmit={(data, { setSubmitting }) => {
+        setSubmitting(true);
+        console.log("submit: ", data);
+        //API Post with axios
+        axios.default.post("/api/v1/recipients", data).then(function (response) {
+          if (response.status === 200) {
+              
+          }
+        }).catch(function (error) {
+          console.log(error);
+        });
+        setSubmitting(false);
       }}
     >
-      {({ values }) => (
+      {({ isSubmitting }) => (
         <Form>
           <div>
-            <Field
+            <InputTextField
               name="contact_name"
+              type="input"
               label="Vollständiger Name"
-              component={InputField}
             />
           </div>
           <div>
-            <Field
+            <InputTextField
               name="address_line_1"
               label="Straße und Hausnummer"
-              component={InputField}
             />
           </div>
           <div>
-            <Field name="address_zipcode" label="PLZ" component={InputField} />
+            <InputTextField name="address_zipcode" label="PLZ" />
           </div>
           <div>
-            <Field name="address_town" label="Stadt" component={InputField} />
+            <InputTextField name="address_town" label="Stadt" />
           </div>
           <div>
-            <Field
-              name="contact_phone"
-              label="Telefon"
-              component={InputField}
-            />
+            <InputTextField name="contact_phone" label="Telefon" />
           </div>
           <div>
-            <Field name="contact_email" label="E-Mail" component={InputField} />
+            <InputTextField name="contact_email" label="E-Mail" />
           </div>
           <div>
             <Button
               style={{ marginTop: "1rem", fontSize: "1rem" }}
+              disabled={isSubmitting}
               type="submit"
             >
               Als Empfänger melden
