@@ -65,6 +65,7 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
             <InputTextField
               name="people_in_household"
               type="number"
+              inputProps={{min: 1, max: 2}}
               label="Personenanzahl"
             />
           </div>

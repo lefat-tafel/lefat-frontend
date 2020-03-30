@@ -2,7 +2,7 @@ import * as React from "react";
 import { useField, FieldAttributes } from "formik";
 import { TextField, TextFieldProps, InputProps } from "@material-ui/core";
 
-export const InputTextField: React.FC<FieldAttributes<{}> & TextFieldProps & InputProps> = ({label, type, ...props}) => {
+export const InputTextField: React.FC<FieldAttributes<{}> & TextFieldProps> = ({label, type, inputProps, ...props}) => {
   const [field, meta] = useField<{}>(props);
   const errorText = meta.error && meta.touched ? meta.error : '';
   return (
@@ -10,6 +10,7 @@ export const InputTextField: React.FC<FieldAttributes<{}> & TextFieldProps & Inp
       {...field} //Handels name="", value="", onChange="", onBlur=""
       label={label}
       type={type}
+      inputProps={inputProps}
       helperText={errorText}
       error={!!errorText}
     />
