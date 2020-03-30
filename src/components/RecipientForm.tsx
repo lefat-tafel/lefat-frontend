@@ -7,6 +7,7 @@ import { InputTextField } from "./InputTextField";
 
 interface Values {
   contact_name: string;
+  people_in_household: number;
   address_line_1: string;
   address_zipcode: string;
   address_town: string;
@@ -28,6 +29,7 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
     <Formik
       initialValues={{
         contact_name: "",
+        people_in_household: 1,
         address_line_1: "",
         address_zipcode: "",
         address_town: "",
@@ -39,13 +41,15 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
         setSubmitting(true);
         console.log("submit: ", data);
         //API Post with axios
-        axios.default.post("/api/v1/recipients", data).then(function (response) {
-          if (response.status === 200) {
-              
-          }
-        }).catch(function (error) {
-          console.log(error);
-        });
+        axios.default
+          .post("/api/v1/recipients", data)
+          .then(function(response) {
+            if (response.status === 200) {
+            }
+          })
+          .catch(function(error) {
+            console.log(error);
+          });
         setSubmitting(false);
       }}
     >
@@ -54,8 +58,14 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
           <div>
             <InputTextField
               name="contact_name"
-              type="input"
               label="Vollständiger Name"
+            />
+          </div>
+          <div>
+            <InputTextField
+              name="people_in_household"
+              type="number"
+              label="Personenanzahl"
             />
           </div>
           <div>

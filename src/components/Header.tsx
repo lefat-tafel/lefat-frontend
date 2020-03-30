@@ -48,7 +48,7 @@ export const Header = () => {
             <NavBar>
                 <ul>
                     <NavItem url="/registration" label="Registrieren" />
-                    <NavItem url="/recipientForm" label="Hilfe anfordern" />
+                    <NavItem url="/recipient" label="Hilfe anfordern" />
                     <NavItem url="/about" label="Über Uns" />
                     <NavItem url="/contact" label="Kontakt" />
                 </ul>                    
