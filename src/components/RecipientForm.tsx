@@ -1,7 +1,7 @@
-import * as axios from "axios";
+import * as axios from "axios"; // https://github.com/axios/axios
 import { Form, Formik } from "formik"; // https://github.com/jaredpalmer/formik
 import * as React from "react";
-import * as yup from "yup"; // https://github.com/jquense/yup
+import * as yup from "yup"; // https://github.com/jquense/yup (npm install -S yup, !!! npm install --save @types/yup !!!)
 import { Button } from "./Button";
 import { InputTextField } from "./InputTextField";
 
