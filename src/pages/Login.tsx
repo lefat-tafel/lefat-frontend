@@ -25,7 +25,8 @@ export const LoginPage = () => {
         password,
       })
     }).then(res => res.json());
-    console.log({ response });
+
+    localStorage.setItem('token', 'test');
   };
   return (
       <div>
