@@ -1,20 +1,23 @@
 # Lefat
 
-Alle kennen die Tafeln: Menschen erhalten an öffentlichen Ausgabestellen dringend benötigte Lebensmittel. Doch die Verteiler öffnen nicht mehr. Wie lassen sich Lebensmittel in dieser Lage no>
+Everyone knows food banks: People in need can go to a special place and receive
+food that they can take home. But since COVID-19 those places do not open
+anymore.
 
-Mit Lefat! Die Tafel umgekehrt kommt jetzt zu dir.
+This is where lefat comes into play: When you can't come to the food, the food
+will come to you!
 
-## Handbuch
+## Documentation
 
 Weitere Informationen über die Einrichtung und Verwendung der App finden sich im `/docs` Unterordner.
 
-## Entwicklung
+## Development
 
-Die Entwicklung und technische Diskussionen finden im Allmende Lab statt.
+Development and technical discussion take place in the allmende lab:
 
 - [🔗 `lefat/lefat-frontend`](https://lab.allmende.io/wirvsvirus/lefat/lefat-frontend)
 
-## Autoren
+## Auhtors
 
 Copyright 2020 by
 
@@ -23,6 +26,6 @@ Copyright 2020 by
 - Jon Richter
 - Robert Jabs
 
-## Lizenz
+## License
 
 AGPL 3.0
