@@ -6,13 +6,18 @@ import { Button } from "./Button";
 import { InputTextField } from "./InputTextField";
 
 interface Values {
-  contact_name: string;
+  adress: {
+    address_line_1: string;
+    address_zipcode: string;
+    address_town: string;
+  };
+  contact_information: {
+    contact_name: string;
+    contact_phone: string;
+    contact_email: string;
+  };
   people_in_household: number;
-  address_line_1: string;
-  address_zipcode: string;
-  address_town: string;
-  contact_phone: string;
-  contact_email: string;
+  status: string;
 }
 interface Props {
   onSubmit: (values: Values) => void;
@@ -30,11 +35,16 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
       initialValues={{
         contact_name: "",
         people_in_household: 1,
-        address_line_1: "",
-        address_zipcode: "",
-        address_town: "",
-        contact_phone: "",
-        contact_email: ""
+        adress: {
+          address_line_1: "",
+          address_zipcode: "",
+          address_town: ""
+        },
+        contact_information: {
+          contact_name: "",
+          contact_phone: "",
+          contact_email: ""
+        }
       }}
       validationSchema={validationSchema}
       onSubmit={(data, { setSubmitting }) => {
@@ -53,11 +63,11 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
         setSubmitting(false);
       }}
     >
-      {({ isSubmitting }) => (
+      {({values, isSubmitting }) => (
         <Form>
           <div>
             <InputTextField
-              name="contact_name"
+              name={"contact_information.contact_name"}
               label="Vollständiger Name"
             />
           </div>
@@ -65,27 +75,33 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
             <InputTextField
               name="people_in_household"
               type="number"
-              inputProps={{min: 1, max: 2}}
+              inputProps={{ min: 1, max: 2 }}
               label="Personenanzahl"
             />
           </div>
           <div>
             <InputTextField
-              name="address_line_1"
+              name={"adress.address_line_1"}
               label="Straße und Hausnummer"
             />
           </div>
           <div>
-            <InputTextField name="address_zipcode" label="PLZ" />
+            <InputTextField name={"adress.address_zipcode"} label="PLZ" />
           </div>
           <div>
-            <InputTextField name="address_town" label="Stadt" />
+            <InputTextField name={"adress.address_town"} label="Stadt" />
           </div>
           <div>
-            <InputTextField name="contact_phone" label="Telefon" />
+            <InputTextField
+              name={"contact_information.contact_phone"}
+              label="Telefon"
+            />
           </div>
           <div>
-            <InputTextField name="contact_email" label="E-Mail" />
+            <InputTextField
+              name={"contact_information.contact_email"}
+              label="E-Mail"
+            />
           </div>
           <div>
             <Button
@@ -95,6 +111,9 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
             >
               Als Empfänger melden
             </Button>
+          </div>
+          <div>
+            <pre>{JSON.stringify(values, null, 2)}</pre>
           </div>
         </Form>
       )}
