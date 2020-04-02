@@ -1,7 +1,7 @@
-import * as axios from "axios"; // https://github.com/axios/axios
-import { Form, Formik } from "formik"; // https://github.com/jaredpalmer/formik
+
+import { Form, Formik } from "formik"; 
 import * as React from "react";
-import * as yup from "yup"; // https://github.com/jquense/yup (npm install -S yup, !!! npm install --save @types/yup !!!)
+import * as yup from "yup"; 
 import { Button } from "./Button";
 import { InputTextField } from "./InputTextField";
 
@@ -50,8 +50,8 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
       onSubmit={(data, { setSubmitting }) => {
         setSubmitting(true);
         console.log("submit: ", data);
-        //API Post with axios
-        axios.default
+        //API Post with axios old
+        /* axios.default
           .post("/api/v1/recipients", data)
           .then(function(response) {
             if (response.status === 200) {
@@ -59,7 +59,8 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
           })
           .catch(function(error) {
             console.log(error);
-          });
+          }); */
+          // Fetch API function call
         setSubmitting(false);
       }}
     >
@@ -113,7 +114,9 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
             </Button>
           </div>
           <div>
-            <pre>{JSON.stringify(values, null, 2)}</pre>
+            <pre>{
+            //Only Developing - Delete after!!!
+            JSON.stringify(values, null, 2)}</pre>
           </div>
         </Form>
       )}
