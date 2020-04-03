@@ -8,6 +8,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { Routes } from './Routes';
 import { theme } from './theme';
 import { ThemeProvider, StylesProvider } from '@material-ui/core';
+import { Footer } from './components/Footer';
 
 const history = createBrowserHistory();
 
@@ -19,6 +20,7 @@ export const App = () => {
         <StylesProvider injectFirst>
           <Header />
           <Routes />
+          <Footer />
         </StylesProvider>
       </ThemeProvider>
     </Router>

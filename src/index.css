@@ -28,7 +28,6 @@
 }
 
 body {
-  overflow: hidden;
   margin: 0;
   min-height: 100vh;
   font-family: 'Acumin Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -36,13 +35,4 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-:root {
-  --navbar-height: 100px;
-  --space-medium: 1rem;
-  --space-large: 2rem;
-  --color-bg: #edf6fe;
-  --color-primary: #f4821e;
-  --color-secondary: #38795d;
 }

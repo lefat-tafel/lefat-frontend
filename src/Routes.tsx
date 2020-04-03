@@ -1,7 +1,7 @@
 import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 import { RegistrationPage } from './pages/Registration';
-import { LandingPage } from './pages/Landing';
+import { LandingPage } from './pages/LandingPage/LandingPage';
 
 export const Routes = () => {
     return (
