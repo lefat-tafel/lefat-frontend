@@ -1,0 +1,49 @@
+{
+    "header": {
+        "about": "Über Uns",
+        "register": "Registrieren",
+        "donate": "Spenden",
+        "contact": "Kontakt",
+        "login": "Einloggen"
+    },
+    "landingPage": {
+        "title": "Die Tafel kommt zu dir!",
+        "subTitle": "Melde dich jetzt an & bekomme Lebensmittel nach Hause geliefert",
+        "mainCta": "Ich brauche Hilfe",
+        "summaryTitle": "LEFAT bringt die Lebensmittel zu dir nach Hause.",
+        "summarySubTitle": "Ganz unkompliziert.",
+        "registerFoodbank": "Tafel registrieren",
+        "registerFoodbankCallout": "Tafel registrieren!",
+        "volunteerQuestion": "Du möchtest helfen?",
+        "volunteerAnswer": "Perfekt! Wir suchen Mitmacher.",
+        "volunteerAction": "Ich möchte mitmachen",
+        "recipientSteps": {
+            "registration": {
+                "title": "Registriere dich",
+                "description": "Registriere dich auf der Seite, um Lebensmittel zu erhalten"
+            },
+            "route": {
+                "title": "Route erstellen",
+                "description": "Wir erstellen die Route für die Lieferungen"
+            },
+            "delivery": {
+                "title": "Lebensmittel erhalten",
+                "description": "Du erhältst die Lebensmittel direkt nach Hause geliefert"
+            }
+        },
+        "donorSteps": {
+            "registration": {
+                "title": "Registriere dich",
+                "description": "Registriere dich als Helfer"
+            },
+            "contact": {
+                "title": "Wir kontaktieren dich",
+                "description": "Wir kontaktieren dich und erklären dir die weiteren Schritte"
+            },
+            "help": {
+                "title": "Helfen",
+                "description": "Du hast es geschafft und hilfst mit"
+            }
+        }
+    }
+}
