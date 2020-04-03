@@ -9,10 +9,16 @@ import { Routes } from './Routes';
 import { theme } from './theme';
 import { ThemeProvider, StylesProvider } from '@material-ui/core';
 import { Footer } from './components/Footer';
+import { composeProviders } from './util/compose-providers';
+import { AuthProvider } from './providers/auth.provider';
+import { ApiProvider } from './providers/api.provider';
 
 const history = createBrowserHistory();
 
-export const App = () => {
+export const App = composeProviders(
+  ApiProvider,
+  AuthProvider,
+)(() => {
   return (
     <Router history={history}>
       <ThemeProvider theme={theme}>
@@ -25,4 +31,4 @@ export const App = () => {
       </ThemeProvider>
     </Router>
   );
-}
+});

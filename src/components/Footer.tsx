@@ -1,12 +1,18 @@
-import { Toolbar, AppBar } from "@material-ui/core";
-import React from 'react';
+import { Toolbar, AppBar, makeStyles } from "@material-ui/core";
+import React from "react";
+
+const useStyles = makeStyles({
+  footerBar: {
+    bottom: 0,
+    top: "unset",
+  },
+});
 
 export const Footer = () => {
-    return (
-        <AppBar color="primary" position="relative">
-            <Toolbar>
-
-            </Toolbar>
-        </AppBar>
-    );
-}
+  const classes = useStyles();
+  return (
+    <AppBar className={classes.footerBar} color="primary" position="fixed">
+      <Toolbar />
+    </AppBar>
+  );
+};

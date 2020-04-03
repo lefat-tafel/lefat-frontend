@@ -13,12 +13,7 @@ import { Menu } from "@material-ui/icons";
 import { theme } from "../theme";
 import { useTranslation } from "react-i18next";
 
-interface NavItemProps {
-  url: string;
-  label: string;
-}
-
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles(_theme => ({
   toolbarButtons: {
     marginLeft: "auto"
   },
