@@ -1,3 +1,0 @@
-[submodule "build"]
-	path = build
-	url = https://lab.allmende.io/wirvsvirus/lefat/lefat-frontend-build-artefact.git
