@@ -13,6 +13,7 @@ export const InputTextField: React.FC<FieldAttributes<{}> & TextFieldProps> = ({
       inputProps={inputProps}
       helperText={errorText}
       error={!!errorText}
+      fullWidth={true}
     />
   );
 };

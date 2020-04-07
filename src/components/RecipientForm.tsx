@@ -1,9 +1,17 @@
-
-import { Form, Formik } from "formik"; 
+import { useMediaQuery } from "@material-ui/core";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/core/styles";
+import { Form, Formik } from "formik";
 import * as React from "react";
-import * as yup from "yup"; 
+import * as yup from "yup";
 import { Button } from "./Button";
 import { InputTextField } from "./InputTextField";
+import { theme } from "../theme";
+import createSpacing from "@material-ui/core/styles/createSpacing";
+
+/**
+ * INTERFACES
+ */
 
 interface Values {
   adress: {
@@ -19,22 +27,43 @@ interface Values {
   people_in_household: number;
   status: string;
 }
+
 interface Props {
   onSubmit: (values: Values) => void;
 }
 
-//Can be used as a very easy and powerful validation schema
+/**
+ * STYLES
+ */
+
+const useStyles = makeStyles(_theme => ({
+  gridContainer: {
+    display: "flex",
+    justifyContent: "center"
+  }
+}));
+
+/**
+ * VALIDATIONS
+ */
+
 const validationSchema = yup.object({
   contact_name: yup.string().required("Bitte angeben!")
 });
 
+/**
+ * COMPONENT
+ */
+
 export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
+  const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
+  const classes = useStyles();
   return (
     //Formik holds all the functions of the form
     <Formik
       initialValues={{
         contact_name: "",
-        people_in_household: 1,
+        people_in_household: "",
         adress: {
           address_line_1: "",
           address_zipcode: "",
@@ -60,51 +89,51 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
           .catch(function(error) {
             console.log(error);
           }); */
-          // Fetch API function call
+        // Fetch API function call
         setSubmitting(false);
       }}
     >
-      {({values, isSubmitting }) => (
+      {({ values, isSubmitting }) => (
         <Form>
-          <div>
-            <InputTextField
-              name={"contact_information.contact_name"}
-              label="Vollständiger Name"
-            />
-          </div>
-          <div>
-            <InputTextField
-              name="people_in_household"
-              type="number"
-              inputProps={{ min: 1, max: 2 }}
-              label="Personenanzahl"
-            />
-          </div>
-          <div>
-            <InputTextField
-              name={"adress.address_line_1"}
-              label="Straße und Hausnummer"
-            />
-          </div>
-          <div>
-            <InputTextField name={"adress.address_zipcode"} label="PLZ" />
-          </div>
-          <div>
-            <InputTextField name={"adress.address_town"} label="Stadt" />
-          </div>
-          <div>
-            <InputTextField
-              name={"contact_information.contact_phone"}
-              label="Telefon"
-            />
-          </div>
-          <div>
-            <InputTextField
-              name={"contact_information.contact_email"}
-              label="E-Mail"
-            />
-          </div>
-          <div>
+          <Grid container className={classes.gridContainer}>
+            <Grid item xs={9}>
+              <InputTextField
+                name={"contact_information.contact_name"}
+                label="Vollständiger Name"
+              />
+            </Grid>
+            <Grid item xs={3}>
+              <InputTextField
+                name="people_in_household"
+                type="number"
+                inputProps={{ min: 1, max: 2 }}
+                label="Pers."
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <InputTextField
+                name={"adress.address_line_1"}
+                label="Straße und Hausnummer"
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <InputTextField name={"adress.address_zipcode"} label="PLZ" />
+            </Grid>
+            <Grid item xs={8}>
+              <InputTextField name={"adress.address_town"} label="Stadt" />
+            </Grid>
+            <Grid item xs={12}>
+              <InputTextField
+                name={"contact_information.contact_phone"}
+                label="Telefon"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <InputTextField
+                name={"contact_information.contact_email"}
+                label="E-Mail"
+              />
+            </Grid>
             <Button
               style={{ marginTop: "1rem", fontSize: "1rem" }}
               disabled={isSubmitting}
@@ -112,11 +141,12 @@ export const RecipientForm: React.FC<Props> = ({ onSubmit }) => {
             >
               Als Empfänger melden
             </Button>
-          </div>
+          </Grid>
           <div>
-            <pre>{
-            //Only Developing - Delete after!!!
-            JSON.stringify(values, null, 2)}</pre>
+            <pre>
+              {//Only Developing - Delete after!!!
+              JSON.stringify(values, null, 2)}
+            </pre>
           </div>
         </Form>
       )}
